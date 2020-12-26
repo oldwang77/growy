@@ -5,10 +5,25 @@ plugins {
 group 'com.transwrap'
 version '1.0-SNAPSHOT'
 
+
+/**
+ * 指定所使用的仓库
+ * mavenLocal
+ * mavenCentral使用的是中央仓库，此时项目中所需要的的jar包都会默认从中央仓库下载到本地目录
+ * 以上配置先从本地仓库寻找依赖，如果没有再从仓库下载
+ */
 repositories {
     mavenCentral()
 }
 
+/**
+ * gradle工程中所有的jar包都在dependencies属性中放置
+ * 每一个jar包的坐标内都有三个基本元素组成
+ * group、name、version
+ * testCompile表示jar包在测试的时候起作用，该属性是jar包的作用域
+ * 我们在gradle中添加坐标的时候要带上jar包的作用域
+ */
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.springframework', name: 'spring-context', version: '5.0.2.RELEASE'
 }
